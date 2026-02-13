@@ -1,0 +1,187 @@
+/* GRUND */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/* GLASS CARD (INDEX-SIDAN) */
+.card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 40px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 15vh;
+    max-width: 90%;
+}
+
+h1 {
+    font-size: clamp(24px, 6vw, 42px);
+    margin-bottom: 30px;
+}
+
+.beating-heart {
+    display: inline-block;
+    animation: simplePulse 1.5s infinite;
+}
+
+@keyframes simplePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+/* KNAPPAR */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 15px 35px;
+    font-size: 20px;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    color: #ff4b6e;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 1001;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 75, 110, 0.4);
+}
+
+#noBtn {
+    background: rgba(255, 255, 255, 0.5);
+    color: #666;
+}
+
+/* GALLERI OCH BILDER (LOVE-SIDAN) */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.media-container {
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    animation: fadeInPop 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.media-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BULTANDE RÖTT SKEN VID HOVER */
+.media-container:hover {
+    z-index: 10;
+    animation: heartBeatRedGlow 1.2s infinite ease-in-out !important;
+    opacity: 1 !important;
+    cursor: pointer;
+}
+
+@keyframes heartBeatRedGlow {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+
+    15% {
+        transform: scale(1.08);
+        box-shadow: 0 0 40px rgba(255, 0, 0, 0.8);
+    }
+
+    45% {
+        transform: scale(1.12);
+        box-shadow: 0 0 60px rgba(255, 0, 0, 1);
+    }
+}
+
+@keyframes fadeInPop {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* HJÄRT-REGN */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99;
+}
+
+.heart {
+    position: absolute;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .media-container {
+        width: 140px;
+        height: 140px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
